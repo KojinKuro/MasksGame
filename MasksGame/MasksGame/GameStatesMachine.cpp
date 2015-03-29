@@ -17,6 +17,13 @@ GameStatesMachine* GameStatesMachine::Instance()
     return g_instance;
 }
 
+std::string GameStatesMachine::getStateID()
+{
+    if(!m_stateList.empty())
+        return m_stateList.back()->getStateID();
+    return NULL;
+}
+
 void GameStatesMachine::update()
 {
     if(!m_stateList.empty())

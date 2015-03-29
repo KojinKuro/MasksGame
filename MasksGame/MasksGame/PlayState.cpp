@@ -6,25 +6,35 @@
 //  Copyright (c) 2015 Charles Kwang. All rights reserved.
 //
 
+#include "GameStatesMachine.h"
+#include "GameOverState.h"
 #include "PlayState.h"
+#include "Player.h"
 
 void PlayState::update()
 {
-    
+    Player::Instance()->update();
+    //if soemthing collides with it
+    if(emyObj->update())
+        GameStatesMachine::Instance()->changeState(new GameOverState());
 }
 
 void PlayState::render()
 {
-    TextureManager::Instance()->draw("man", 20, 20, 183, 122, Game::Instance()->getRenderer());
-    TextureManager::Instance()->draw("man", 300, 300, 183, 122, Game::Instance()->getRenderer());
+    Player::Instance()->draw();
+    emyObj->draw();
 }
 
 void PlayState::onEnter()
 {
-    TextureManager::Instance()->load("horse.gif", "man", Game::Instance()->getRenderer());
+    song = Mix_LoadMUS("Overworld.mp3");
+    Mix_PlayMusic(song, -1);
+    
+    emyObj = new Enemy();
 }
 
 void PlayState::onExit()
 {
-    
+    Mix_FreeMusic(song);
+    SDL_Delay(1000);
 }

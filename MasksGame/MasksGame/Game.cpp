@@ -6,10 +6,13 @@
 //  Copyright (c) 2015 Charles Kwang. All rights reserved.
 //
 
+#include <iostream>
 #include "Game.h"
 #include "InputHandler.h"
 #include "GameStatesMachine.h"
 #include "PlayState.h"
+#include "PauseState.h"
+#include "GameOverState.h"
 #include "MenuState.h"
 
 Game* Game::g_instance = 0;
@@ -58,6 +61,9 @@ void Game::init(const char* title, int x, int y, int w, int h, bool fullScreen)
     else
         return;
     
+    Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+    TTF_Init();
+    
     GameStatesMachine::Instance()->pushState(new MenuState());
     
     g_running = true;
@@ -69,10 +75,57 @@ void Game::update()
     GameStatesMachine::Instance()->update();
 }
 
+//helper for handleEvents and the changing controls depending on gamestate
+enum game_states
+{
+    eMenu,
+    ePlay,
+    ePause,
+    eOver
+};
+int hashIt(std::string stringVal)
+{
+    if(stringVal=="MENU")
+        return eMenu;
+    if(stringVal=="PLAY")
+        return ePlay;
+    if(stringVal=="PAUSE")
+        return ePause;
+    if(stringVal=="OVER")
+        return eOver;
+    return NULL;
+}
+
+//handles the gamestates at the current moment only
 void Game::handleEvents()
 {
-    if(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN))
-        GameStatesMachine::Instance()->changeState(new PlayState());
+    switch(hashIt(GameStatesMachine::Instance()->getStateID()))
+    {
+        case eMenu:
+            if(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE))
+            {
+                GameStatesMachine::Instance()->popState();
+                quit();
+            }
+            break;
+        case ePlay:
+            if(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_P))
+                GameStatesMachine::Instance()->changeState(new PauseState());
+            break;
+        case ePause:
+            if(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_P))
+                GameStatesMachine::Instance()->changeState(new PlayState());
+            break;
+        case eOver:
+            if(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN))
+            {
+                GameStatesMachine::Instance()->popState();
+                quit();
+            }
+            break;
+        default:
+            break;
+    }
 }
 
 void Game::render()
@@ -88,6 +141,9 @@ void Game::clean()
 {
     SDL_DestroyWindow(g_window);
     SDL_DestroyRenderer(g_renderer);
+    
+    Mix_Quit();
+    TTF_Quit();
     
     SDL_Quit();
 }

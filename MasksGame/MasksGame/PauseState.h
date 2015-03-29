@@ -19,9 +19,13 @@ public:
     
     virtual void onEnter();
     virtual void onExit();
+    virtual std::string getStateID() {return stateID;}
 private:
     std::string stateID = "PAUSE";
-    virtual std::string getStateID() {return stateID;}
+    
+    Mix_Music * song = NULL;
+    
+    SDL_Texture * text = NULL;
 };
 
 #endif /* defined(__MasksGame__PauseState__) */

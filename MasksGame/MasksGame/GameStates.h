@@ -10,8 +10,11 @@
 #define __MasksGame__GameStates__
 
 #include <string>
+#include <iostream>
 #include <vector>
+#include <SDL2_mixer/SDL_mixer.h>
 #include "Game.h"
+#include "InputHandler.h"
 #include "TextureManager.h"
 
 class GameStates
@@ -22,7 +25,6 @@ public:
     
     virtual void onEnter() = 0;
     virtual void onExit() = 0;
-private:
     virtual std::string getStateID() = 0;
 };
 

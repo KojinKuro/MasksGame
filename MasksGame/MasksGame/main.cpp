@@ -18,9 +18,12 @@ int main(int argc, const char * argv[]) {
     
     while(Game::Instance()->getRunning())
     {
+        frameStart = SDL_GetTicks();
+        
         Game::Instance()->update();
         Game::Instance()->handleEvents();
         Game::Instance()->render();
+
         
         frameTime = SDL_GetTicks() - frameStart;
         if(frameTime < SDLDELAY)

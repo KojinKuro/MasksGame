@@ -19,9 +19,14 @@ public:
     
     virtual void onEnter();
     virtual void onExit();
+    virtual std::string getStateID() {return stateID;}
 private:
     std::string stateID = "OVER";
-    virtual std::string getStateID() {return stateID;}
+    
+    Mix_Music * song;
+    
+    SDL_Texture * text;
+    SDL_Color color = {0,0,0};
 };
 
 #endif /* defined(__MasksGame__GameOverState__) */

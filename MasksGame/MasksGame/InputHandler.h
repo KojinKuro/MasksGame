@@ -59,7 +59,6 @@ public:
     void onMouseButtonDown(SDL_Event& g_event);
     void onMouseButtonUp(SDL_Event& g_event);
     
-    
 };
 
 #endif /* defined(__Tutorial_Game__InputHandler__) */

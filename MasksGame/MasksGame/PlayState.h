@@ -10,6 +10,7 @@
 #define __MasksGame__PlayState__
 
 #include "GameStates.h"
+#include "Enemy.h"
 
 class PlayState : public GameStates
 {
@@ -19,9 +20,12 @@ public:
     
     virtual void onEnter();
     virtual void onExit();
+    virtual std::string getStateID() {return stateID;}
 private:
     std::string stateID = "PLAY";
-    virtual std::string getStateID() {return stateID;}
+    Enemy * emyObj;
+
+    Mix_Music * song = NULL;
 };
 
 #endif /* defined(__MasksGame__PlayState__) */

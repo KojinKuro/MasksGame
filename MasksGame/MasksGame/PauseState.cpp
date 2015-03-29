@@ -26,4 +26,5 @@ void PauseState::onEnter()
 void PauseState::onExit()
 {
     
+    SDL_Delay(1000);
 }

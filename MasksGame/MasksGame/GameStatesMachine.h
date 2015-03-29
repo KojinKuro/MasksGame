@@ -19,6 +19,8 @@ public:
     void update();
     void render();
     
+    std::string getStateID();
+    
     void popState();
     void pushState(GameStates * gamestate);
     void changeState(GameStates * gamestate);

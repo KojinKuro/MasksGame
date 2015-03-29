@@ -9,11 +9,14 @@
 #ifndef __MasksGame__BaseObject__
 #define __MasksGame__BaseObject__
 
+#include "TextureManager.h"
+#include "Game.h"
+
 class BaseObject
 {
 public:
     virtual void draw() = 0;
-    virtual void update() = 0;
+    virtual bool update() = 0;
     virtual void clean() = 0;
 protected:
     int m_currFrame = 0;
