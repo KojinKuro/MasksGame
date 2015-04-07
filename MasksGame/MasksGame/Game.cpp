@@ -135,7 +135,7 @@ void Game::handleEvents()
 
 void Game::render()
 {
-    //SDL_RenderClear(g_renderer);
+    SDL_RenderClear(g_renderer);
     
     GameStatesMachine::Instance()->render();
     

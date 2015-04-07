@@ -53,7 +53,4 @@ void PlayState::onExit()
     
     health.clean();
     soul.clean();
-    
-    //try
-    SDL_RenderClear(Game::Instance()->getRenderer());
 }

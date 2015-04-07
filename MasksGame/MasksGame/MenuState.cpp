@@ -69,7 +69,4 @@ void MenuState::onExit()
     Mix_FreeMusic(song);
     SDL_DestroyTexture(texture);
     SDL_DestroyTexture(texture2);
-    
-    //try
-    SDL_RenderClear(Game::Instance()->getRenderer());
 }

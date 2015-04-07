@@ -45,7 +45,4 @@ void HelpState::onExit()
     for(int i=0;i<h_textList.size();i++)
         SDL_DestroyTexture(h_textList.at(i));
     h_textList.clear();
-    
-    //try
-    SDL_RenderClear(Game::Instance()->getRenderer());
 }

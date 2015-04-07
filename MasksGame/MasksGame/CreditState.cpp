@@ -48,8 +48,5 @@ void CreditState::onExit()
         SDL_DestroyTexture(c_textList.at(i));
     }
     c_textList.clear();
-    
-    //try
-    SDL_RenderClear(Game::Instance()->getRenderer());
 }
 

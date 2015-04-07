@@ -41,7 +41,4 @@ void GameOverState::onExit()
     main_menuButt->clean();
     delete main_menuButt;
     SDL_DestroyTexture(text);
-    
-    //try
-    SDL_RenderClear(Game::Instance()->getRenderer());
 }
