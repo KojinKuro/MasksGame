@@ -10,7 +10,7 @@
 #include "Player.h"
 
 Enemy::Enemy() {
-    TextureManager::Instance()->load("horse.gif", "Enemy", Game::Instance()->getRenderer());
+    TextureManager::Instance()->load("slime.png", "Enemy", Game::Instance()->getRenderer());
 }
 
 void Enemy::draw()

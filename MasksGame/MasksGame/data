@@ -1,0 +1,13 @@
+################################################
+#          =Data files for the game=           #
+################################################
+[PLAYER]
+Health = 100
+Soul = 100
+positionX = 192
+positionY = 128
+MapID = 0
+Color = WHITE
+
+#thing for user 32
+#14 x 11

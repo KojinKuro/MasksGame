@@ -10,6 +10,7 @@
 #define __MasksGame__ButtonObject__
 
 #include "BaseObject.h"
+#include <SDL2/SDL.h>
 #include <string>
 
 class ButtonObject : public BaseObject
@@ -17,15 +18,17 @@ class ButtonObject : public BaseObject
 public:
     virtual void draw();
     virtual void clean();
+    //is the mouse inside the button
     virtual bool update();
     
-    //do button thing because im too lazy to make it in the actual function
-    void buttonAction();
-    
-    ButtonObject(std::string filename, std::string id, int xPos, int yPos, int width, int height);
+    ButtonObject(std::string text, int xPos, int yPos, int width, int height);
 private:    
-    std::string sID;
+    std::string sID = "button";
+    std::string test;
     
+    SDL_Color color {0,0,0};
+    SDL_Texture * texture = NULL;
+
     int pos_X;
     int pos_Y;
     

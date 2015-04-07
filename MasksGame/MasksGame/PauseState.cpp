@@ -25,6 +25,6 @@ void PauseState::onEnter()
 
 void PauseState::onExit()
 {
-    
-    SDL_Delay(1000);
+    //try
+    SDL_RenderClear(Game::Instance()->getRenderer());
 }

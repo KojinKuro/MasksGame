@@ -114,3 +114,8 @@ void TextureManager::drawFrame(std::string id, int xpos, int ypos, int w, int h,
     
     SDL_RenderCopyEx(render, g_textureMap[id], &sourceRect, &destRect, 0, 0, flip);
 }
+
+void TextureManager::clean(std::string id)
+{
+    SDL_DestroyTexture(g_textureMap[id]);
+}

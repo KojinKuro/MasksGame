@@ -13,7 +13,11 @@
 
 void PlayState::update()
 {
+    currMap->update();
     Player::Instance()->update();
+    health.update();
+    soul.update();
+    
     //if soemthing collides with it
     if(emyObj->update())
         GameStatesMachine::Instance()->changeState(new GameOverState());
@@ -21,8 +25,12 @@ void PlayState::update()
 
 void PlayState::render()
 {
+    currMap->render();
     Player::Instance()->draw();
     emyObj->draw();
+    
+    health.draw();
+    soul.draw();
 }
 
 void PlayState::onEnter()
@@ -31,10 +39,21 @@ void PlayState::onEnter()
     Mix_PlayMusic(song, -1);
     
     emyObj = new Enemy();
+    
+    currMap = new TileMap("tilemap_game","map.png");
 }
 
 void PlayState::onExit()
 {
     Mix_FreeMusic(song);
-    SDL_Delay(1000);
+    
+    delete currMap;
+    delete emyObj;
+    Player::Instance()->reset();
+    
+    health.clean();
+    soul.clean();
+    
+    //try
+    SDL_RenderClear(Game::Instance()->getRenderer());
 }

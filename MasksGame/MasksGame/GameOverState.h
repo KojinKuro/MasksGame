@@ -10,6 +10,7 @@
 #define __MasksGame__GameOverState__
 
 #include "GameStates.h"
+#include "ButtonObject.h"
 
 class GameOverState : public GameStates
 {
@@ -27,6 +28,8 @@ private:
     
     SDL_Texture * text;
     SDL_Color color = {0,0,0};
+    
+    ButtonObject * main_menuButt = NULL;
 };
 
 #endif /* defined(__MasksGame__GameOverState__) */

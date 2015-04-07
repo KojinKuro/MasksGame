@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include "Game.h"
+#include "Player.h"
 #include "InputHandler.h"
 #include "GameStatesMachine.h"
 #include "PlayState.h"
@@ -52,6 +53,7 @@ void Game::init(const char* title, int x, int y, int w, int h, bool fullScreen)
         if(g_renderer !=0)
         {
             SDL_SetRenderDrawColor(g_renderer, 255, 255, 255, 255);
+            SDL_RenderClear(g_renderer);
         }
         else
         {
@@ -102,19 +104,20 @@ void Game::handleEvents()
     switch(hashIt(GameStatesMachine::Instance()->getStateID()))
     {
         case eMenu:
-            if(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE))
-            {
+            if(!g_running)
                 GameStatesMachine::Instance()->popState();
-                quit();
-            }
             break;
         case ePlay:
             if(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_P))
                 GameStatesMachine::Instance()->changeState(new PauseState());
+            if(!g_running)
+                GameStatesMachine::Instance()->popState();
             break;
         case ePause:
             if(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_P))
                 GameStatesMachine::Instance()->changeState(new PlayState());
+            if(!g_running)
+                GameStatesMachine::Instance()->popState();
             break;
         case eOver:
             if(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN))
@@ -122,6 +125,8 @@ void Game::handleEvents()
                 GameStatesMachine::Instance()->popState();
                 quit();
             }
+            if(!g_running)
+                GameStatesMachine::Instance()->popState();
             break;
         default:
             break;
@@ -130,7 +135,7 @@ void Game::handleEvents()
 
 void Game::render()
 {
-    SDL_RenderClear(g_renderer);
+    //SDL_RenderClear(g_renderer);
     
     GameStatesMachine::Instance()->render();
     

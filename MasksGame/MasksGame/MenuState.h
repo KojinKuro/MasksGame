@@ -29,6 +29,7 @@ private:
     std::vector<BaseObject*> m_gamelist;
     
     SDL_Texture * texture;
+    SDL_Texture * texture2;
     SDL_Color color = {0,0,0};
 };
 

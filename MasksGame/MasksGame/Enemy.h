@@ -27,12 +27,12 @@ public:
     
     Enemy();
 private:
-    Vector2D p_position = Vector2D(300,300);
+    Vector2D p_position = Vector2D(350,300);
     Vector2D p_velocity = Vector2D(0,0);
     Vector2D p_acceleration = Vector2D(0,0);
     
-    int p_width = 183;
-    int p_height = 122;
+    int p_width = 32;
+    int p_height = 32;
 };
 
 

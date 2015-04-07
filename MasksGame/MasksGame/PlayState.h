@@ -11,6 +11,8 @@
 
 #include "GameStates.h"
 #include "Enemy.h"
+#include "TileMap.h"
+#include "hmpObject.h"
 
 class PlayState : public GameStates
 {
@@ -26,6 +28,11 @@ private:
     Enemy * emyObj;
 
     Mix_Music * song = NULL;
+    
+    TileMap * currMap = NULL;
+    
+    hmpObject health = hmpObject("health");
+    hmpObject soul = hmpObject("soul");
 };
 
 #endif /* defined(__MasksGame__PlayState__) */

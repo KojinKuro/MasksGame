@@ -24,16 +24,33 @@ public:
     int getHeight(){return p_height;}
     Player();
     
+    void reset();
+    
+    //controls health
+    void addHealth(int num);
+    void lowHealth(int num);
+    void setHealth(int num);
+    int getHealth() {return p_healthCur;}
+    
     //making singleton
     static Player * p_instance;
     static Player * Instance();
 private:
-    Vector2D p_position =  Vector2D(0,0);
+    Vector2D p_position = Vector2D(192,128);
     Vector2D p_velocity = Vector2D(0,0);
     Vector2D p_acceleration = Vector2D(0,0);
     
-    int p_width = 183;
-    int p_height = 122;
+    Vector2D p_toplPos = Vector2D(32,64);
+    Vector2D p_botrPos = Vector2D(480,416);
+    
+    int p_width = 32;
+    int p_height = 32;
+    
+    int p_healthMax = 100;
+    int p_healthCur = 100;
+    int p_healthMin = 0;
+    
+    ~Player();
 };
 
 #endif /* defined(__MasksGame__Player__) */
