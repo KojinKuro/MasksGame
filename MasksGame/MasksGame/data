@@ -11,3 +11,12 @@ Color = WHITE
 
 #thing for user 32
 #14 x 11
+#IDs for Reference
+#[MAP]
+#ID 01 tilemap_gate
+#ID 02 tilemap_streetleft
+#ID 03 tilemap_streetright
+#ID 04 tilemap_tree
+#ID 05 tilemap_cafeteria
+#ID 06 tilemap_classleft
+#ID 07 tilemap_classright

@@ -12,7 +12,9 @@
 #include "GameStates.h"
 #include "Enemy.h"
 #include "TileMap.h"
+#include "MapRender.h"
 #include "hmpObject.h"
+#include <vector>
 
 class PlayState : public GameStates
 {
@@ -30,6 +32,10 @@ private:
     Mix_Music * song = NULL;
     
     TileMap * currMap = NULL;
+    std::vector<MapRender*> p_levelList;
+    
+    SDL_Color color = {0,0,0};
+    std::vector<SDL_Texture*> p_textList;
     
     hmpObject health = hmpObject("health");
     hmpObject soul = hmpObject("soul");

@@ -59,7 +59,7 @@ void MenuState::onEnter()
 
 void MenuState::onExit()
 {
-    for(int i=0;i<m_gamelist.size();i++)
+    for(int i=0;i<m_gamelist.size();++i)
     {
         m_gamelist.at(i)->clean();
         delete m_gamelist.at(i);

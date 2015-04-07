@@ -9,7 +9,7 @@
 #include "Enemy.h"
 #include "Player.h"
 
-Enemy::Enemy() {
+Enemy::Enemy() : p_position(350,300) , p_velocity(0,0) , p_acceleration(0,0) {
     TextureManager::Instance()->load("slime.png", "Enemy", Game::Instance()->getRenderer());
 }
 

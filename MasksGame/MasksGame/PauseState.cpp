@@ -20,7 +20,9 @@ void PauseState::render()
 
 void PauseState::onEnter()
 {
-    
+    //stop pause menu looping
+    while(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_P))
+        InputHandler::Instance()->update();
 }
 
 void PauseState::onExit()

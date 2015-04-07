@@ -20,6 +20,13 @@ public:
     void setX(int x) {v_X = x;}
     void setY(int y) {v_Y = y;}
     
+    bool Equals(Vector2D& v2)
+    {
+        if(v_X == v2.v_X && v_Y == v2.v_Y)
+            return true;
+        return false;
+    }
+    
     Vector2D operator+(Vector2D& v2)
     {
         return Vector2D(v_X + v2.v_X, v_Y + v2.v_Y);

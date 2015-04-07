@@ -18,7 +18,7 @@ Player * Player::Instance()
     return p_instance;
 }
 
-Player::Player() {
+Player::Player() : p_position(192,128) , p_velocity(0,0) , p_acceleration(0,0), p_toplPos(32,64), p_botrPos(480,416) , p_width(32), p_height(32){
     TextureManager::Instance()->load("character.png", "player", Game::Instance()->getRenderer());
 }
 

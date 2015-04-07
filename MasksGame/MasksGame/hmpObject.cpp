@@ -11,15 +11,16 @@
 
 void hmpObject::draw()
 {
+    //offsets to 96 pixels
     if(health)
     {
-        for(int i=1;i<=heartNum;i++)
-            TextureManager::Instance()->draw("heart", (i-1)*32, 0, 32, 32, Game::Instance()->getRenderer());
+        for(int i=1;i<=heartNum;++i)
+            TextureManager::Instance()->draw("heart", (i+2)*32, 0, 32, 32, Game::Instance()->getRenderer());
     }
     else
     {
-        for(int i=1;i<=soulNum;i++)
-            TextureManager::Instance()->draw("soul", (i-1)*32, 32, 32, 32, Game::Instance()->getRenderer());
+        for(int i=1;i<=soulNum;++i)
+            TextureManager::Instance()->draw("soul", (i+2)*32, 32, 32, 32, Game::Instance()->getRenderer());
     }
 }
 

@@ -43,7 +43,7 @@ void CreditState::onExit()
     delete returnMain;
     
     //gets rid of all text
-    for(int i=0;i<c_textList.size();i++)
+    for(int i=0;i<c_textList.size();++i)
     {
         SDL_DestroyTexture(c_textList.at(i));
     }

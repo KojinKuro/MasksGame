@@ -14,7 +14,7 @@ InputHandler * InputHandler::p_instance = 0;
 void InputHandler::update()
 {
     m_keystate = SDL_GetKeyboardState(0);
-    if(SDL_PollEvent(&event))
+    while(SDL_PollEvent(&event))
     {
         switch (event.type) {
             case SDL_QUIT:
@@ -37,9 +37,9 @@ void InputHandler::update()
             case SDL_MOUSEBUTTONUP:
                 if(event.button.button == SDL_BUTTON_LEFT)
                     m_mouseStates[LEFT] = false;
-                if(event.button.button == SDL_BUTTON_MIDDLE)
+                else if(event.button.button == SDL_BUTTON_MIDDLE)
                     m_mouseStates[MIDDLE] = false;
-                if(event.button.button == SDL_BUTTON_RIGHT)
+                else if(event.button.button == SDL_BUTTON_RIGHT)
                     m_mouseStates[RIGHT] = false;
                 break;
             case SDL_MOUSEMOTION:
@@ -61,14 +61,15 @@ InputHandler * InputHandler::Instance()
 
 void InputHandler::clean()
 {
-    
+    delete p_instance;
+    p_instance = NULL;
 }
 
 bool InputHandler::isKeyDown(SDL_Scancode key)
 {
     if(m_keystate != 0)
     {
-        if(m_keystate[key] == 1)
+        if(m_keystate[key] == true)
             return true;
         else
             return false;

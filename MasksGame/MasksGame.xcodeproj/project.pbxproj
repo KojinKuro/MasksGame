@@ -17,6 +17,8 @@
 		27944BFB1AC0D58E00A05B70 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27944BF91AC0D58E00A05B70 /* Enemy.cpp */; };
 		27A6B1DB1ABC003A00E4092E /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A6B1DA1ABC003A00E4092E /* SDL2_ttf.framework */; };
 		27D276481AB92765008CA94F /* ButtonObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27D276461AB92765008CA94F /* ButtonObject.cpp */; };
+		27E5FC7D1AD46697009D61CA /* MapRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27E5FC7B1AD46697009D61CA /* MapRender.cpp */; };
+		27E5FC8B1AD47C68009D61CA /* Collider2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27E5FC891AD47C68009D61CA /* Collider2D.cpp */; };
 		27EB21F61AB79C4800FE7C64 /* InputHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27EB21EB1AB79C4800FE7C64 /* InputHandler.cpp */; };
 		27EB21F71AB79C4800FE7C64 /* TextureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27EB21EE1AB79C4800FE7C64 /* TextureManager.cpp */; };
 		27EB21F81AB79C4800FE7C64 /* tinystr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27EB21F01AB79C4800FE7C64 /* tinystr.cpp */; };
@@ -79,6 +81,17 @@
 		27A6B1DA1ABC003A00E4092E /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = ../../../../Library/Frameworks/SDL2_ttf.framework; sourceTree = "<group>"; };
 		27D276461AB92765008CA94F /* ButtonObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ButtonObject.cpp; sourceTree = "<group>"; };
 		27D276471AB92765008CA94F /* ButtonObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonObject.h; sourceTree = "<group>"; };
+		27E5FC7B1AD46697009D61CA /* MapRender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MapRender.cpp; sourceTree = "<group>"; };
+		27E5FC7C1AD46697009D61CA /* MapRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapRender.h; sourceTree = "<group>"; };
+		27E5FC801AD478D1009D61CA /* overmap_gate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = overmap_gate; sourceTree = "<group>"; };
+		27E5FC811AD478ED009D61CA /* overmap_streetleft */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = overmap_streetleft; sourceTree = "<group>"; };
+		27E5FC821AD4792B009D61CA /* overmap_streetright */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = overmap_streetright; sourceTree = "<group>"; };
+		27E5FC831AD4793F009D61CA /* overmap_cafeteria */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = overmap_cafeteria; sourceTree = "<group>"; };
+		27E5FC841AD4794A009D61CA /* overmap_classleft */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = overmap_classleft; sourceTree = "<group>"; };
+		27E5FC851AD47959009D61CA /* overmap_classright */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = overmap_classright; sourceTree = "<group>"; };
+		27E5FC861AD47967009D61CA /* overmap_tree */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = overmap_tree; sourceTree = "<group>"; };
+		27E5FC891AD47C68009D61CA /* Collider2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Collider2D.cpp; sourceTree = "<group>"; };
+		27E5FC8A1AD47C68009D61CA /* Collider2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Collider2D.h; sourceTree = "<group>"; };
 		27EB21EB1AB79C4800FE7C64 /* InputHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputHandler.cpp; sourceTree = "<group>"; };
 		27EB21EC1AB79C4800FE7C64 /* InputHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputHandler.h; sourceTree = "<group>"; };
 		27EB21EE1AB79C4800FE7C64 /* TextureManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextureManager.cpp; sourceTree = "<group>"; };
@@ -176,6 +189,8 @@
 				279394091AB83F08003F2394 /* Acoustic.mp3 */,
 				2767ECC41AB77F2000841A2C /* main.cpp */,
 				27F144B01ACCD6AC00721EE0 /* tilemaps */,
+				27E5FC7F1AD478B2009D61CA /* overmaps */,
+				27E5FC871AD47C38009D61CA /* helperAttachments */,
 				2759E3151AB7F18F00FBA429 /* assests */,
 				2767ECD81AB7854400841A2C /* GameObjects */,
 				27EB22001AB79E9800FE7C64 /* GameStates */,
@@ -189,6 +204,8 @@
 				27EB21EF1AB79C4800FE7C64 /* TextureManager.h */,
 				27522A131ACA23CE002DCAF6 /* TileMap.cpp */,
 				27522A141ACA23CE002DCAF6 /* TileMap.h */,
+				27E5FC7B1AD46697009D61CA /* MapRender.cpp */,
+				27E5FC7C1AD46697009D61CA /* MapRender.h */,
 				27F144B21ACCDD8200721EE0 /* DataReader.cpp */,
 				27F144B31ACCDD8200721EE0 /* DataReader.h */,
 				27EB22101AB7A11C00FE7C64 /* TODO */,
@@ -210,6 +227,29 @@
 				27F144A81ACCCAA200721EE0 /* hmpObject.h */,
 			);
 			name = GameObjects;
+			sourceTree = "<group>";
+		};
+		27E5FC7F1AD478B2009D61CA /* overmaps */ = {
+			isa = PBXGroup;
+			children = (
+				27E5FC801AD478D1009D61CA /* overmap_gate */,
+				27E5FC811AD478ED009D61CA /* overmap_streetleft */,
+				27E5FC821AD4792B009D61CA /* overmap_streetright */,
+				27E5FC831AD4793F009D61CA /* overmap_cafeteria */,
+				27E5FC841AD4794A009D61CA /* overmap_classleft */,
+				27E5FC851AD47959009D61CA /* overmap_classright */,
+				27E5FC861AD47967009D61CA /* overmap_tree */,
+			);
+			name = overmaps;
+			sourceTree = "<group>";
+		};
+		27E5FC871AD47C38009D61CA /* helperAttachments */ = {
+			isa = PBXGroup;
+			children = (
+				27E5FC891AD47C68009D61CA /* Collider2D.cpp */,
+				27E5FC8A1AD47C68009D61CA /* Collider2D.h */,
+			);
+			name = helperAttachments;
 			sourceTree = "<group>";
 		};
 		27EB21FC1AB79C5100FE7C64 /* tinyxml */ = {
@@ -326,11 +366,13 @@
 				27EB21F81AB79C4800FE7C64 /* tinystr.cpp in Sources */,
 				27EB22061AB79EB700FE7C64 /* MenuState.cpp in Sources */,
 				27EB22091AB79EC000FE7C64 /* GameOverState.cpp in Sources */,
+				27E5FC7D1AD46697009D61CA /* MapRender.cpp in Sources */,
 				27F144B41ACCDD8200721EE0 /* DataReader.cpp in Sources */,
 				27EB22031AB79EAA00FE7C64 /* PlayState.cpp in Sources */,
 				2767ECC51AB77F2000841A2C /* main.cpp in Sources */,
 				27EB220F1AB7A09400FE7C64 /* Player.cpp in Sources */,
 				27F144A91ACCCAA200721EE0 /* hmpObject.cpp in Sources */,
+				27E5FC8B1AD47C68009D61CA /* Collider2D.cpp in Sources */,
 				27455B251AD3688D004BD685 /* CreditState.cpp in Sources */,
 				27EB21F91AB79C4800FE7C64 /* tinyxml.cpp in Sources */,
 				27944BFB1AC0D58E00A05B70 /* Enemy.cpp in Sources */,

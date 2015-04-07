@@ -36,15 +36,15 @@ public:
     static Player * p_instance;
     static Player * Instance();
 private:
-    Vector2D p_position = Vector2D(192,128);
-    Vector2D p_velocity = Vector2D(0,0);
-    Vector2D p_acceleration = Vector2D(0,0);
+    Vector2D p_position;
+    Vector2D p_velocity;
+    Vector2D p_acceleration;
     
-    Vector2D p_toplPos = Vector2D(32,64);
-    Vector2D p_botrPos = Vector2D(480,416);
+    Vector2D p_toplPos;
+    Vector2D p_botrPos;
     
-    int p_width = 32;
-    int p_height = 32;
+    int p_width;
+    int p_height;
     
     int p_healthMax = 100;
     int p_healthCur = 100;

@@ -1,23 +1,23 @@
 #Todo file
-make text for health
+(x) make text for health
 make map better
-    render and renderclear
-    ui and viewports
+    make stuff linked
+    ui
 
-make buttons
 make time
-make color
-
-make the color thing
-make new people
-make map to switch
-improve map
-add graphics for map
+make color interactions
 change the enemy art
-make dialog work
+make new people
+make colldier class
+make dialogue work
+make buttons
+add graphics for map
 data files
 help menu
 make enemies afffected by health
 add a save button
+
+make loading the thing more efficent
+optimize code like strings -> char and stuff
 
 #Temporary do nothing about

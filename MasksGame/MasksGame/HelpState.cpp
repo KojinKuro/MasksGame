@@ -18,8 +18,8 @@ void HelpState::update()
 
 void HelpState::render()
 {
-    for(int i=0;i<h_textList.size();i++)
-        TextureManager::Instance()->renderTexture(h_textList.at(i), Game::Instance()->getRenderer(), 0, i*32);
+    for(int i=0;i<h_textList.size();++i)
+        TextureManager::Instance()->renderTexture(h_textList.at(i), Game::Instance()->getRenderer(), 0, i*16);
     backButton->draw();
 }
 
@@ -32,6 +32,7 @@ void HelpState::onEnter()
     h_textList.push_back(TextureManager::Instance()->renderText("A: left", "text.ttf", color, 12, Game::Instance()->getRenderer()));
     h_textList.push_back(TextureManager::Instance()->renderText("D: right", "text.ttf", color, 12, Game::Instance()->getRenderer()));
     h_textList.push_back(TextureManager::Instance()->renderText("S: down", "text.ttf", color, 12, Game::Instance()->getRenderer()));
+    h_textList.push_back(TextureManager::Instance()->renderText("P: pause", "text.ttf", color, 12, Game::Instance()->getRenderer()));
     h_textList.push_back(TextureManager::Instance()->renderText("Mouse: clicking", "text.ttf", color, 12, Game::Instance()->getRenderer()));
     
     h_textList.push_back(TextureManager::Instance()->renderText("=Story=", "text.ttf", color, 12, Game::Instance()->getRenderer()));
@@ -42,7 +43,7 @@ void HelpState::onExit()
 {
     delete backButton;
     
-    for(int i=0;i<h_textList.size();i++)
+    for(int i=0;i<h_textList.size();++i)
         SDL_DestroyTexture(h_textList.at(i));
     h_textList.clear();
 }

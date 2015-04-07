@@ -144,6 +144,8 @@ void Game::render()
 
 void Game::clean()
 {
+    InputHandler::Instance()->clean();
+    
     SDL_DestroyWindow(g_window);
     SDL_DestroyRenderer(g_renderer);
     
