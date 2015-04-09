@@ -11,6 +11,7 @@
 
 #include "TextureManager.h"
 #include "Game.h"
+#include "Vector2D.h"
 
 class BaseObject
 {
@@ -18,7 +19,7 @@ public:
     virtual void draw() = 0;
     virtual bool update() = 0;
     virtual void clean() = 0;
-protected:
+protected:    
     int m_currFrame = 0;
     int m_currRow = 0;
 };

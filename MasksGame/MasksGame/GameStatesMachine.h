@@ -24,6 +24,8 @@ public:
     void popState();
     void pushState(GameStates * gamestate);
     void changeState(GameStates * gamestate);
+    
+    ~GameStatesMachine();
 private:
     static GameStatesMachine* g_instance;
     GameStatesMachine() {}

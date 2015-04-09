@@ -1,21 +1,20 @@
 #Todo file
-(x) make text for health
 make map better
     make stuff linked
     ui
 
-make time
+objectManager
+
 make color interactions
 change the enemy art
 make new people
-make colldier class
+
 make dialogue work
 make buttons
 add graphics for map
 data files
-help menu
-make enemies afffected by health
 add a save button
+make time
 
 make loading the thing more efficent
 optimize code like strings -> char and stuff

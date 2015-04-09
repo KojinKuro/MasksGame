@@ -7,11 +7,10 @@
 //
 
 #include "ButtonObject.h"
-#include "InputHandler.h"
 #include "Game.h"
 #include "TextureManager.h"
 
-ButtonObject::ButtonObject(std::string text, int xPos, int yPos, int width, int height) : pos_X(xPos) , pos_Y(yPos) , obj_W(width) , obj_H(height)
+ButtonObject::ButtonObject(std::string text, int xPos, int yPos, int width, int height) : p_position(xPos, yPos) , p_width(width) , p_height(height) , e_collider(this, InputHandler::Instance())
 {
     TextureManager::Instance()->load("button.png", sID, Game::Instance()->getRenderer());
     texture = TextureManager::Instance()->renderText(text, "text.ttf", color, 20, Game::Instance()->getRenderer());
@@ -19,10 +18,10 @@ ButtonObject::ButtonObject(std::string text, int xPos, int yPos, int width, int 
 
 void ButtonObject::draw()
 {
-    TextureManager::Instance()->draw(sID, pos_X, pos_Y, obj_W, obj_H, Game::Instance()->getRenderer());
+    TextureManager::Instance()->draw(sID, p_position.getX(), p_position.getY(), p_width, p_height, Game::Instance()->getRenderer());
     int w,h;
     SDL_QueryTexture(texture, NULL, NULL, &w, &h);
-    TextureManager::Instance()->renderTexture(texture, Game::Instance()->getRenderer(), pos_X+(obj_W-w)/2, pos_Y+(obj_H-h)/2);
+    TextureManager::Instance()->renderTexture(texture, Game::Instance()->getRenderer(), p_position.getX()+(p_width-w)/2, p_position.getY()+(p_height-h)/2);
 }
 
 void ButtonObject::clean()
@@ -33,10 +32,8 @@ void ButtonObject::clean()
 
 bool ButtonObject::update()
 {
-    if(InputHandler::Instance()->getMousePosition()->getX() >= pos_X && InputHandler::Instance()->getMousePosition()->getX() <= (pos_X + obj_W)) {
-        if(InputHandler::Instance()->getMousePosition()->getY() >= pos_Y && InputHandler::Instance()->getMousePosition()->getY() <= (pos_Y+obj_H)) {
-            return true;
-        }
-    }
+    e_collider.update();
+    if(e_collider.getStateID() == 4 || e_collider.getStateID() == 2 || e_collider.getStateID() == 1)
+        return true;
     return false;
 }

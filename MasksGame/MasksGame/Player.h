@@ -10,7 +10,8 @@
 #define __MasksGame__Player__
 
 #include "BaseObject.h"
-#include "Vector2D.h"
+#include "BlankObject.h"
+#include "Collider2D.h"
 
 class Player : public BaseObject
 {
@@ -19,12 +20,13 @@ public:
     virtual bool update();
     virtual void clean();
     
-    Vector2D getPosition(){return p_position;}
-    int getWidth(){return p_width;}
-    int getHeight(){return p_height;}
     Player();
     
     void reset();
+    
+    Vector2D getPosition() {return p_position;}
+    int getWidth() {return p_width;}
+    int getHeight() {return p_height;}
     
     //controls health
     void addHealth(int num);
@@ -36,12 +38,13 @@ public:
     static Player * p_instance;
     static Player * Instance();
 private:
+    //vectors for control
     Vector2D p_position;
     Vector2D p_velocity;
     Vector2D p_acceleration;
-    
-    Vector2D p_toplPos;
-    Vector2D p_botrPos;
+
+    BlankObject * p_boundBox = new BlankObject(32,64,448,352);
+    Collider2D<BlankObject, Player> e_collider;
     
     int p_width;
     int p_height;

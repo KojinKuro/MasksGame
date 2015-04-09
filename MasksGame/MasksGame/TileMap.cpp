@@ -30,7 +30,7 @@ void TileMap::render()
 
 void TileMap::draw(int x, int y)
 {
-    TextureManager::Instance()->drawFrame("tileMap", x*32, y*32, 32, 32, 0, t_map[x][y], Game::Instance()->getRenderer());
+    TextureManager::Instance()->drawFrame("tileMap", x*32, y*32, 32, 32, 0, (t_map.at(y)).at(x), Game::Instance()->getRenderer());
 }
 
 void TileMap::clean()
@@ -76,10 +76,12 @@ TileMap::TileMap(std::string fileName, std::string picFile)
             }
         }
         
+        std::vector<int> tempVector;
         for(int i=0;i<COLMAX;i++)
         {
-            t_map[i][tt] = atoi(token[i]);
+            tempVector.push_back(atoi(token[i]));
         }
+        t_map.push_back(tempVector);
         tt++;
     }
     

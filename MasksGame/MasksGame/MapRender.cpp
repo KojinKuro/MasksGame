@@ -17,14 +17,14 @@ int MapRender::p_ID = 1;
 
 void MapRender::update()
 {
-    for(int i=0;i<p_overList.size();++i)
-    {
-        if(Player::Instance()->getPosition().Equals(p_overList.at(i)))
-        {
-            
-            break;
-        }
-    }
+//    for(int i=0;i<p_overList.size();++i)
+//    {
+//        if(Player::Instance()->getPosition().Equals(p_overList.at(i)))
+//        {
+//            
+//            break;
+//        }
+//    }
 
 }
 

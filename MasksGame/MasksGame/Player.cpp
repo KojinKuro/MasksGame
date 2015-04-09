@@ -18,14 +18,15 @@ Player * Player::Instance()
     return p_instance;
 }
 
-Player::Player() : p_position(192,128) , p_velocity(0,0) , p_acceleration(0,0), p_toplPos(32,64), p_botrPos(480,416) , p_width(32), p_height(32){
+//p_toplPos(32,64) , p_botrPos(480,416)
+
+Player::Player() : p_position(192,128) , p_velocity(0,0) , p_acceleration(0,0) , p_width(32) , p_height(32) , p_healthCur(100), e_collider(p_boundBox, this){
     TextureManager::Instance()->load("character.png", "player", Game::Instance()->getRenderer());
 }
 
 Player::~Player()
 {
-    delete p_instance;
-    p_instance = NULL;
+    
 }
 
 void Player::draw()
@@ -39,32 +40,38 @@ bool Player::update()
     p_velocity.setY(0);
     
     //controls how the player moves and makes stay inside box
-    if(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP) &&(p_toplPos.getY() <= p_position.getY()))
+    if(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_W))
         p_velocity.setY(-1);
-    if(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN) &&(p_botrPos.getY() >= (p_position.getY()+p_height)))
+    if(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_S))
         p_velocity.setY(1);
-    if(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT) && (p_toplPos.getX() <= p_position.getX()))
+    if(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_A))
         p_velocity.setX(-1);
-    if(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT) &&(p_botrPos.getX() >= (p_position.getX()+p_width)))
+    if(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_D))
         p_velocity.setX(1);
-    
+
     //controls health player remove later
     if(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_EQUALS))
         addHealth(10);
     if(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_MINUS))
        lowHealth(10);
     
-    
     //adds movemnt ands stuff
     p_velocity += p_acceleration;
+    
+    Vector2D oldPosition = p_position;
     p_position += p_velocity;
+    
+    e_collider.update();
+    if(e_collider.getStateID() != 4)
+        p_position = oldPosition;
     
     return true;
 }
 
 void Player::clean()
 {
-    
+    delete p_boundBox;
+    delete p_instance;
 }
 
 void Player::reset()
@@ -77,6 +84,8 @@ void Player::reset()
     
     p_acceleration.setX(0);
     p_acceleration.setY(0);
+    
+    p_healthCur = 100;
 }
 
 void Player::addHealth(int num)

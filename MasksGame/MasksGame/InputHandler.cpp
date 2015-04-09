@@ -13,7 +13,8 @@ InputHandler * InputHandler::p_instance = 0;
 
 void InputHandler::update()
 {
-    m_keystate = SDL_GetKeyboardState(0);
+    memcpy(m_keystate, newKeyState, this->length);
+    newKeyState = SDL_GetKeyboardState(NULL);
     while(SDL_PollEvent(&event))
     {
         switch (event.type) {
@@ -21,10 +22,8 @@ void InputHandler::update()
                 Game::Instance()->quit();
                 break;
             case SDL_KEYDOWN:
-                onKeyDown(event);
                 break;
             case SDL_KEYUP:
-                onKeyUp(event);
                 break;
             case SDL_MOUSEBUTTONDOWN:
                 if(event.button.button == SDL_BUTTON_LEFT)
@@ -56,7 +55,7 @@ InputHandler * InputHandler::Instance()
 {
     if(p_instance == 0)
         p_instance = new InputHandler();
-        return p_instance;
+    return p_instance;
 }
 
 void InputHandler::clean()
@@ -69,7 +68,7 @@ bool InputHandler::isKeyDown(SDL_Scancode key)
 {
     if(m_keystate != 0)
     {
-        if(m_keystate[key] == true)
+        if(newKeyState[key] == true)
             return true;
         else
             return false;
@@ -77,12 +76,26 @@ bool InputHandler::isKeyDown(SDL_Scancode key)
     return false;
 }
 
-void InputHandler::onKeyDown(SDL_Event& g_event)
+bool InputHandler::onKeyDown(SDL_Scancode key)
 {
-    
+    if(m_keystate != 0)
+    {
+        if(m_keystate[key] == false && newKeyState[key] == true)
+            return true;
+        else
+            return false;
+    }
+    return false;
 }
 
-void InputHandler::onKeyUp(SDL_Event& g_event)
+bool InputHandler::onKeyUp(SDL_Scancode key)
 {
-    
+    if(m_keystate != 0)
+    {
+        if(m_keystate[key] == true && newKeyState[key] == false)
+            return true;
+        else
+            return false;
+    }
+    return false;
 }

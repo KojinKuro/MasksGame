@@ -18,11 +18,11 @@ void PlayState::update()
     p_levelList.at(p_levelList.at(0)->p_ID)->update();
     
     Player::Instance()->update();
+    emyObj->update();
     health.update();
     soul.update();
     
-    //if soemthing collides with it
-    if(emyObj->update())
+    if(Player::Instance()->getHealth() == 0)
         GameStatesMachine::Instance()->changeState(new GameOverState());
 }
 
@@ -46,10 +46,6 @@ void PlayState::render()
 
 void PlayState::onEnter()
 {
-    //stop pause menu looping
-    while(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_P))
-        InputHandler::Instance()->update();
-    
     song = Mix_LoadMUS("Overworld.mp3");
     Mix_PlayMusic(song, -1);
     
@@ -88,8 +84,19 @@ void PlayState::onExit()
     p_levelList.clear();
     
     delete emyObj;
+    emyObj = NULL;
     Player::Instance()->reset();
     
     health.clean();
     soul.clean();
+}
+
+void PlayState::onTempExit()
+{
+    Mix_PauseMusic();
+}
+
+void PlayState::onTempEnter()
+{
+    Mix_ResumeMusic();
 }

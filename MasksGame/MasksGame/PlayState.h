@@ -22,12 +22,15 @@ public:
     virtual void update();
     virtual void render();
     
+    void onTempExit();
+    void onTempEnter();
+    
     virtual void onEnter();
     virtual void onExit();
     virtual std::string getStateID() {return stateID;}
 private:
     std::string stateID = "PLAY";
-    Enemy * emyObj;
+    Enemy * emyObj = NULL;
 
     Mix_Music * song = NULL;
     

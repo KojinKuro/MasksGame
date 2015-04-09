@@ -23,6 +23,9 @@ public:
     virtual void update() = 0;
     virtual void render() = 0;
     
+    virtual void onTempExit() {}
+    virtual void onTempEnter() {}
+    
     virtual void onEnter() = 0;
     virtual void onExit() = 0;
     virtual std::string getStateID() = 0;

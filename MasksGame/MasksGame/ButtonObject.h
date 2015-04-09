@@ -10,8 +10,10 @@
 #define __MasksGame__ButtonObject__
 
 #include "BaseObject.h"
+#include "InputHandler.h"
 #include <SDL2/SDL.h>
 #include <string>
+#include "Collider2D.h"
 
 class ButtonObject : public BaseObject
 {
@@ -22,18 +24,22 @@ public:
     virtual bool update();
     
     ButtonObject(std::string text, int xPos, int yPos, int width, int height);
-private:    
+    
+    Vector2D getPosition(){return p_position;}
+    int getWidth() {return p_width;}
+    int getHeight() {return p_height;}
+private:
+    Vector2D p_position;
+    int p_width;
+    int p_height;
+    
     std::string sID = "button";
     std::string test;
     
     SDL_Color color {0,0,0};
     SDL_Texture * texture = NULL;
-
-    int pos_X;
-    int pos_Y;
     
-    int obj_W;
-    int obj_H;
+    Collider2D<ButtonObject, InputHandler> e_collider;
 };
 
 #endif /* defined(__MasksGame__ButtonObject__) */

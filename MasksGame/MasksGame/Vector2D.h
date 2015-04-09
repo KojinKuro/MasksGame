@@ -12,6 +12,7 @@
 class Vector2D
 {
 public:
+    Vector2D() : v_X(0) , v_Y(0) {}
     Vector2D(int x, int y) : v_X(x) , v_Y(y) {}
     
     int getX() {return v_X;}
@@ -19,13 +20,6 @@ public:
     
     void setX(int x) {v_X = x;}
     void setY(int y) {v_Y = y;}
-    
-    bool Equals(Vector2D& v2)
-    {
-        if(v_X == v2.v_X && v_Y == v2.v_Y)
-            return true;
-        return false;
-    }
     
     Vector2D operator+(Vector2D& v2)
     {

@@ -108,14 +108,14 @@ void Game::handleEvents()
                 GameStatesMachine::Instance()->popState();
             break;
         case ePlay:
-            if(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_P))
-                GameStatesMachine::Instance()->changeState(new PauseState());
+            if(InputHandler::Instance()->onKeyUp(SDL_SCANCODE_P))
+                GameStatesMachine::Instance()->pushState(new PauseState());
             if(!g_running)
                 GameStatesMachine::Instance()->popState();
             break;
         case ePause:
-            if(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_P))
-                GameStatesMachine::Instance()->changeState(new PlayState());
+            if(InputHandler::Instance()->onKeyUp(SDL_SCANCODE_P))
+                GameStatesMachine::Instance()->popState();
             if(!g_running)
                 GameStatesMachine::Instance()->popState();
             break;

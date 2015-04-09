@@ -40,6 +40,7 @@ void CreditState::onEnter()
 
 void CreditState::onExit()
 {
+    returnMain->clean();
     delete returnMain;
     
     //gets rid of all text

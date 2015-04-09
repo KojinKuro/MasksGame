@@ -14,9 +14,9 @@
 class hmpObject : public BaseObject
 {
 public:
-    void draw();
-    bool update();
-    void clean();
+    virtual void draw();
+    virtual bool update();
+    virtual void clean();
     
     hmpObject(std::string type);
 private:

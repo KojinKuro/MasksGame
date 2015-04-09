@@ -41,6 +41,7 @@ void HelpState::onEnter()
 
 void HelpState::onExit()
 {
+    backButton->clean();
     delete backButton;
     
     for(int i=0;i<h_textList.size();++i)

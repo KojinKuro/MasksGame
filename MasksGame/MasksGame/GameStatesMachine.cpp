@@ -44,11 +44,17 @@ void GameStatesMachine::popState()
         m_stateList.back()->onExit();
         delete m_stateList.back();
         m_stateList.pop_back();
+        if(!m_stateList.empty())
+            m_stateList.back()->onTempEnter();
     }
 }
 
 void GameStatesMachine::pushState(GameStates * gamestate)
 {
+    if(!m_stateList.empty())
+    {
+        (m_stateList.back())->onTempExit();
+    }
     m_stateList.push_back(gamestate);
     m_stateList.back()->onEnter();
 }
@@ -65,4 +71,12 @@ void GameStatesMachine::changeState(GameStates * gamestate)
     
     m_stateList.push_back(gamestate);
     m_stateList.back()->onEnter();
+}
+
+GameStatesMachine::~GameStatesMachine()
+{
+    while(!m_stateList.empty())
+    {
+        popState();
+    }
 }

@@ -10,6 +10,7 @@
 #define __MasksGame__TileMap__
 
 #include <string>
+#include <vector>
 
 class TileMap
 {
@@ -22,8 +23,8 @@ public:
 private:
     int t_col = 20;
     int t_row = 15;
-    
-    int t_map[20][15] {};
+
+    std::vector<std::vector<int>> t_map;
     
     const int COLMAX = 20;
     const int ROWMAX = 15;
